@@ -1,0 +1,411 @@
+gplink-1.4.0 #1107 (Jan  1 2021)
+Copyright (c) 1998-2014 gputils project
+Listing File Generated: 1-13-2023  20:25:58
+ 
+ 
+Address  Value    Disassembly              Source
+-------  -----    -----------              ------
+                                           ;--------------------------------------------------------
+                                           ; File Created by SDCC : free open source ANSI-C Compiler
+                                           ; Version 4.0.0 #11528 (Linux)
+                                           ;--------------------------------------------------------
+                                           ; PIC port for the 14-bit core
+                                           ;--------------------------------------------------------
+                                           ;	.file	"Lab1.c"
+                                           	list	p=12f675
+                                           	radix dec
+                                           	include "p12f675.inc"
+                                                   LIST
+                                           
+                                           ;==========================================================================
+                                           ; Build date : Aug 07 2014
+                                           ;  MPASM PIC12F675 processor include
+                                           ; 
+                                           ;  (c) Copyright 1999-2014 Microchip Technology, All rights reserved
+                                           ;==========================================================================
+                                           
+                                                   NOLIST
+                                           ;--------------------------------------------------------
+                                           ; config word(s)
+                                           ;--------------------------------------------------------
+002007   3fd4     addlw   0xd4             	__config 0x3fd4
+                                           ;--------------------------------------------------------
+                                           ; external declarations
+                                           ;--------------------------------------------------------
+                                           	extern	_ANSEL
+                                           	extern	_TRISIO
+                                           	extern	_GPIO
+                                           	extern	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; global declarations
+                                           ;--------------------------------------------------------
+                                           	global	_main
+                                           	global	_delay
+                                           
+                                           	global PSAVE
+                                           	global SSAVE
+                                           	global WSAVE
+                                           	global STK12
+                                           	global STK11
+                                           	global STK10
+                                           	global STK09
+                                           	global STK08
+                                           	global STK07
+                                           	global STK06
+                                           	global STK05
+                                           	global STK04
+                                           	global STK03
+                                           	global STK02
+                                           	global STK01
+                                           	global STK00
+                                           
+                                           sharebank udata_ovr 0x0020
+                                           PSAVE	res 1
+                                           SSAVE	res 1
+                                           WSAVE	res 1
+                                           STK12	res 1
+                                           STK11	res 1
+                                           STK10	res 1
+                                           STK09	res 1
+                                           STK08	res 1
+                                           STK07	res 1
+                                           STK06	res 1
+                                           STK05	res 1
+                                           STK04	res 1
+                                           STK03	res 1
+                                           STK02	res 1
+                                           STK01	res 1
+                                           STK00	res 1
+                                           
+                                           ;--------------------------------------------------------
+                                           ; global definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; absolute symbol definitions
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; compiler-defined variables
+                                           ;--------------------------------------------------------
+                                           UDL_Lab1_0	udata
+                                           r0x1008	res	1
+                                           r0x1009	res	1
+                                           r0x100A	res	1
+                                           r0x100B	res	1
+                                           r0x1001	res	1
+                                           r0x1000	res	1
+                                           r0x1002	res	1
+                                           r0x1003	res	1
+                                           r0x1004	res	1
+                                           r0x1005	res	1
+                                           r0x1006	res	1
+                                           r0x1007	res	1
+                                           ;--------------------------------------------------------
+                                           ; initialized data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; initialized absolute data
+                                           ;--------------------------------------------------------
+                                           ;--------------------------------------------------------
+                                           ; overlayable items in internal ram 
+                                           ;--------------------------------------------------------
+                                           ;	udata_ovr
+                                           ;--------------------------------------------------------
+                                           ; reset vector 
+                                           ;--------------------------------------------------------
+                                           STARTUP	code 0x0000
+000000   0000     nop                      	nop
+                                           	pagesel __sdcc_gsinit_startup
+000001   2802     goto    0x0002           	goto	__sdcc_gsinit_startup
+                                           ;--------------------------------------------------------
+                                           ; code
+                                           ;--------------------------------------------------------
+                                           code_Lab1	code
+                                           ;***
+                                           ;  pBlock Stats: dbName = M
+                                           ;***
+                                           ;has an exit
+                                           ;functions called:
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;   _delay
+                                           ;5 compiler assigned registers:
+                                           ;   r0x1008
+                                           ;   r0x1009
+                                           ;   r0x100A
+                                           ;   r0x100B
+                                           ;   STK00
+                                           ;; Starting pCode block
+                                           S_Lab1__main	code
+                                           _main:
+                                           ; 2 exit points
+                                           ;	.line	10; "Lab1.c"	ANSEL=0b00000000;
+00009e   1683     bsf     0x03, 0x5        	BANKSEL	_ANSEL
+00009f   019f     clrf    0x1f             	CLRF	_ANSEL
+                                           ;	.line	11; "Lab1.c"	TRISIO = 0b00100000; //Poner todos los pines como salidas
+0000a0   3020     movlw   0x20             	MOVLW	0x20
+0000a1   0085     movwf   0x05             	MOVWF	_TRISIO
+                                           ;	.line	12; "Lab1.c"	GPIO = 0x00000000; //Poner pines en bajo
+0000a2   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000a3   0185     clrf    0x05             	CLRF	_GPIO
+                                           ;	.line	15; "Lab1.c"	int timer = 0;
+0000a4   01b0     clrf    0x30             	CLRF	r0x1008
+0000a5   01b1     clrf    0x31             	CLRF	r0x1009
+                                           _00122_DS_:
+                                           ;	.line	20; "Lab1.c"	timer = timer+1;
+0000a6   0ab0     incf    0x30, 0x1        	INCF	r0x1008,F
+0000a7   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+0000a8   0ab1     incf    0x31, 0x1        	INCF	r0x1009,F
+                                           ;	.line	21; "Lab1.c"	if (timer == 6){
+0000a9   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000aa   3a06     xorlw   0x06             	XORLW	0x06
+0000ab   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000ac   28b3     goto    0x00b3           	GOTO	_00106_DS_
+0000ad   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000ae   3a00     xorlw   0x00             	XORLW	0x00
+0000af   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000b0   28b3     goto    0x00b3           	GOTO	_00106_DS_
+                                           ;	.line	22; "Lab1.c"	timer =0;
+0000b1   01b0     clrf    0x30             	CLRF	r0x1008
+0000b2   01b1     clrf    0x31             	CLRF	r0x1009
+                                           _00106_DS_:
+                                           ;	.line	24; "Lab1.c"	if(GPIO==0b00100000){
+0000b3   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000b4   0805     movf    0x05, 0x0        	MOVF	_GPIO,W
+0000b5   3a20     xorlw   0x20             	XORLW	0x20
+0000b6   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000b7   28a6     goto    0x00a6           	GOTO	_00122_DS_
+                                           ;	.line	25; "Lab1.c"	cont = timer;
+0000b8   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000b9   00b2     movwf   0x32             	MOVWF	r0x100A
+0000ba   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000bb   00b3     movwf   0x33             	MOVWF	r0x100B
+                                           ;	.line	26; "Lab1.c"	if(cont==1){
+0000bc   0830     movf    0x30, 0x0        	MOVF	r0x1008,W
+0000bd   3a01     xorlw   0x01             	XORLW	0x01
+0000be   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000bf   28cc     goto    0x00cc           	GOTO	_00108_DS_
+0000c0   0831     movf    0x31, 0x0        	MOVF	r0x1009,W
+0000c1   3a00     xorlw   0x00             	XORLW	0x00
+0000c2   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000c3   28cc     goto    0x00cc           	GOTO	_00108_DS_
+                                           ;	.line	27; "Lab1.c"	GPIO=0b00000001;
+0000c4   3001     movlw   0x01             	MOVLW	0x01
+0000c5   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	28; "Lab1.c"	delay(time);
+0000c6   30fa     movlw   0xfa             	MOVLW	0xfa
+0000c7   00af     movwf   0x2f             	MOVWF	STK00
+0000c8   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+0000c9   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	29; "Lab1.c"	GPIO=0b00000000;
+0000ca   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000cb   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00108_DS_:
+                                           ;	.line	31; "Lab1.c"	if(cont == 2){
+0000cc   0832     movf    0x32, 0x0        	MOVF	r0x100A,W
+0000cd   3a02     xorlw   0x02             	XORLW	0x02
+0000ce   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000cf   28dd     goto    0x00dd           	GOTO	_00110_DS_
+0000d0   0833     movf    0x33, 0x0        	MOVF	r0x100B,W
+0000d1   3a00     xorlw   0x00             	XORLW	0x00
+0000d2   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000d3   28dd     goto    0x00dd           	GOTO	_00110_DS_
+                                           ;	.line	32; "Lab1.c"	GPIO=0b00000010;
+0000d4   3002     movlw   0x02             	MOVLW	0x02
+0000d5   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000d6   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	33; "Lab1.c"	delay(time);
+0000d7   30fa     movlw   0xfa             	MOVLW	0xfa
+0000d8   00af     movwf   0x2f             	MOVWF	STK00
+0000d9   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+0000da   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	34; "Lab1.c"	GPIO=0b00000000;
+0000db   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000dc   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00110_DS_:
+                                           ;	.line	36; "Lab1.c"	if(cont == 3){
+0000dd   0832     movf    0x32, 0x0        	MOVF	r0x100A,W
+0000de   3a03     xorlw   0x03             	XORLW	0x03
+0000df   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000e0   28ee     goto    0x00ee           	GOTO	_00112_DS_
+0000e1   0833     movf    0x33, 0x0        	MOVF	r0x100B,W
+0000e2   3a00     xorlw   0x00             	XORLW	0x00
+0000e3   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000e4   28ee     goto    0x00ee           	GOTO	_00112_DS_
+                                           ;	.line	37; "Lab1.c"	GPIO=0b00000100;
+0000e5   3004     movlw   0x04             	MOVLW	0x04
+0000e6   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000e7   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	38; "Lab1.c"	delay(time);
+0000e8   30fa     movlw   0xfa             	MOVLW	0xfa
+0000e9   00af     movwf   0x2f             	MOVWF	STK00
+0000ea   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+0000eb   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	39; "Lab1.c"	GPIO=0b00000000;
+0000ec   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000ed   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00112_DS_:
+                                           ;	.line	41; "Lab1.c"	if(cont == 4){
+0000ee   0832     movf    0x32, 0x0        	MOVF	r0x100A,W
+0000ef   3a04     xorlw   0x04             	XORLW	0x04
+0000f0   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000f1   28ff     goto    0x00ff           	GOTO	_00114_DS_
+0000f2   0833     movf    0x33, 0x0        	MOVF	r0x100B,W
+0000f3   3a00     xorlw   0x00             	XORLW	0x00
+0000f4   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+0000f5   28ff     goto    0x00ff           	GOTO	_00114_DS_
+                                           ;	.line	42; "Lab1.c"	GPIO=0b00000101;
+0000f6   3005     movlw   0x05             	MOVLW	0x05
+0000f7   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000f8   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	43; "Lab1.c"	delay(time);
+0000f9   30fa     movlw   0xfa             	MOVLW	0xfa
+0000fa   00af     movwf   0x2f             	MOVWF	STK00
+0000fb   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+0000fc   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	44; "Lab1.c"	GPIO=0b00000000;
+0000fd   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+0000fe   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00114_DS_:
+                                           ;	.line	46; "Lab1.c"	if(cont == 5){
+0000ff   0832     movf    0x32, 0x0        	MOVF	r0x100A,W
+000100   3a05     xorlw   0x05             	XORLW	0x05
+000101   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000102   2910     goto    0x0110           	GOTO	_00116_DS_
+000103   0833     movf    0x33, 0x0        	MOVF	r0x100B,W
+000104   3a00     xorlw   0x00             	XORLW	0x00
+000105   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000106   2910     goto    0x0110           	GOTO	_00116_DS_
+                                           ;	.line	47; "Lab1.c"	GPIO=0b00000110;
+000107   3006     movlw   0x06             	MOVLW	0x06
+000108   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000109   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	48; "Lab1.c"	delay(time);
+00010a   30fa     movlw   0xfa             	MOVLW	0xfa
+00010b   00af     movwf   0x2f             	MOVWF	STK00
+00010c   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+00010d   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	49; "Lab1.c"	GPIO=0b00000000;
+00010e   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+00010f   0185     clrf    0x05             	CLRF	_GPIO
+                                           _00116_DS_:
+                                           ;	.line	51; "Lab1.c"	if(cont == 6){
+000110   0832     movf    0x32, 0x0        	MOVF	r0x100A,W
+000111   3a06     xorlw   0x06             	XORLW	0x06
+000112   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000113   28a6     goto    0x00a6           	GOTO	_00122_DS_
+000114   0833     movf    0x33, 0x0        	MOVF	r0x100B,W
+000115   3a00     xorlw   0x00             	XORLW	0x00
+000116   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000117   28a6     goto    0x00a6           	GOTO	_00122_DS_
+                                           ;	.line	52; "Lab1.c"	GPIO=0b00000111;
+000118   3007     movlw   0x07             	MOVLW	0x07
+000119   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+00011a   0085     movwf   0x05             	MOVWF	_GPIO
+                                           ;	.line	53; "Lab1.c"	delay(time);
+00011b   30fa     movlw   0xfa             	MOVLW	0xfa
+00011c   00af     movwf   0x2f             	MOVWF	STK00
+00011d   3000     movlw   0x00             	MOVLW	0x00
+                                           	PAGESEL	_delay
+00011e   2157     call    0x0157           	CALL	_delay
+                                           	PAGESEL	$
+                                           ;	.line	54; "Lab1.c"	GPIO=0b00000000;
+00011f   1283     bcf     0x03, 0x5        	BANKSEL	_GPIO
+000120   0185     clrf    0x05             	CLRF	_GPIO
+000121   28a6     goto    0x00a6           	GOTO	_00122_DS_
+                                           ;	.line	59; "Lab1.c"	}
+000122   0008     return                   	RETURN	
+                                           ; exit point of _main
+                                           
+                                           ;***
+                                           ;  pBlock Stats: dbName = C
+                                           ;***
+                                           ;has an exit
+                                           ;9 compiler assigned registers:
+                                           ;   r0x1000
+                                           ;   STK00
+                                           ;   r0x1001
+                                           ;   r0x1002
+                                           ;   r0x1003
+                                           ;   r0x1004
+                                           ;   r0x1005
+                                           ;   r0x1006
+                                           ;   r0x1007
+                                           ;; Starting pCode block
+                                           S_Lab1__delay	code
+                                           _delay:
+                                           ; 2 exit points
+                                           ;	.line	61; "Lab1.c"	void delay(unsigned int tiempo)
+000157   00b5     movwf   0x35             	MOVWF	r0x1000
+000158   082f     movf    0x2f, 0x0        	MOVF	STK00,W
+000159   00b4     movwf   0x34             	MOVWF	r0x1001
+                                           ;	.line	66; "Lab1.c"	for(i=0;i<tiempo;i++)
+00015a   01b6     clrf    0x36             	CLRF	r0x1002
+00015b   01b7     clrf    0x37             	CLRF	r0x1003
+                                           _00133_DS_:
+00015c   0835     movf    0x35, 0x0        	MOVF	r0x1000,W
+00015d   0237     subwf   0x37, 0x0        	SUBWF	r0x1003,W
+00015e   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+00015f   2962     goto    0x0162           	GOTO	_00154_DS_
+000160   0834     movf    0x34, 0x0        	MOVF	r0x1001,W
+000161   0236     subwf   0x36, 0x0        	SUBWF	r0x1002,W
+                                           _00154_DS_:
+000162   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+000163   297d     goto    0x017d           	GOTO	_00135_DS_
+                                           ;;genSkipc:3307: created from rifx:0x7ffd4eaf2100
+                                           ;	.line	67; "Lab1.c"	for(j=0;j<1275;j++);
+000164   30fb     movlw   0xfb             	MOVLW	0xfb
+000165   00b8     movwf   0x38             	MOVWF	r0x1004
+000166   3004     movlw   0x04             	MOVLW	0x04
+000167   00b9     movwf   0x39             	MOVWF	r0x1005
+                                           _00131_DS_:
+000168   30ff     movlw   0xff             	MOVLW	0xff
+000169   0738     addwf   0x38, 0x0        	ADDWF	r0x1004,W
+00016a   00ba     movwf   0x3a             	MOVWF	r0x1006
+00016b   30ff     movlw   0xff             	MOVLW	0xff
+00016c   00bb     movwf   0x3b             	MOVWF	r0x1007
+00016d   0839     movf    0x39, 0x0        	MOVF	r0x1005,W
+00016e   1803     btfsc   0x03, 0x0        	BTFSC	STATUS,0
+00016f   0f39     incfsz  0x39, 0x0        	INCFSZ	r0x1005,W
+000170   07bb     addwf   0x3b, 0x1        	ADDWF	r0x1007,F
+000171   083a     movf    0x3a, 0x0        	MOVF	r0x1006,W
+000172   00b8     movwf   0x38             	MOVWF	r0x1004
+000173   083b     movf    0x3b, 0x0        	MOVF	r0x1007,W
+000174   00b9     movwf   0x39             	MOVWF	r0x1005
+000175   083b     movf    0x3b, 0x0        	MOVF	r0x1007,W
+000176   043a     iorwf   0x3a, 0x0        	IORWF	r0x1006,W
+000177   1d03     btfss   0x03, 0x2        	BTFSS	STATUS,2
+000178   2968     goto    0x0168           	GOTO	_00131_DS_
+                                           ;	.line	66; "Lab1.c"	for(i=0;i<tiempo;i++)
+000179   0ab6     incf    0x36, 0x1        	INCF	r0x1002,F
+00017a   1903     btfsc   0x03, 0x2        	BTFSC	STATUS,2
+00017b   0ab7     incf    0x37, 0x1        	INCF	r0x1003,F
+00017c   295c     goto    0x015c           	GOTO	_00133_DS_
+                                           _00135_DS_:
+                                           ;	.line	68; "Lab1.c"	}
+00017d   0008     return                   	RETURN	
+                                           ; exit point of _delay
+                                           
+                                           
+                                           ;	code size estimation:
+                                           ;	  158+   26 =   184 instructions (  420 byte)
+                                           
+                                           	end
