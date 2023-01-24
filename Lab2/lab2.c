@@ -202,6 +202,9 @@ int main(void)
   sei();
   
   while (1) {
+    parpadeo_inicial();
+      inicio = 0;
+      encender_leds(arrayG);
     while (inicio == 1){ 
         if (count < 4){
           count = count + 1;
